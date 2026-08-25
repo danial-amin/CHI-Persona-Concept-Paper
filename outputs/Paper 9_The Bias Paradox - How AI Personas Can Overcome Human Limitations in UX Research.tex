@@ -1,0 +1,70 @@
+% =====================================================================
+% Paper 9: The Bias Paradox (Celik, Fibabanka)
+% PERSONA_CATEGORY: Surrogate user persona (LLM-simulated participant)
+% PERSONA_SUBCATEGORY: Persona-as-interviewable-research-informant (bias-resistant stand-in for human participants); Persona-as-reactivated-design-artifact (static persona document turned conversational agent)
+% =====================================================================
+
+\subsection*{Paper 9 --- \textit{The Bias Paradox: How AI Personas Can Overcome Human Limitations in UX Research} (Celik)}
+
+This position paper starts from the \emph{classic} HCI definition of the persona --- a research-based description of a group of users, here six personas distilled from roughly seventy qualitative interviews with banking customers, segmented by wealth level and investment style --- and then explicitly diagnoses the well-known failure mode of that artifact: personas ``remain static artifacts that teams struggle to integrate into ongoing design decisions.'' The paper's move is therefore not to redefine the persona but to \emph{re-animate} it: each persona document (demographics, financial goals, challenges, behavioural patterns) is instantiated as a conversational agent via ChatGPT's CustomGPT, so that product teams across the organisation can query a user perspective on demand instead of scheduling interviews. Persona is thus operationalized twice over in the same project: as a design-communication artifact (personas were ``presented'' to workshop participants during the design-thinking session) and as an interviewable surrogate informant that substitutes for --- or triangulates with --- real respondents.
+
+The paper's distinctive conceptual contribution is epistemic rather than technical: it treats the persona as a \emph{bias profile} to be compared against the bias profile of live human participants. Following a workshop with forty high-net-worth clients in a luxury hotel with their portfolio managers present, the author attributes the resulting feedback (strong professed attachment to human advisors, deflection of digital alternatives) to social desirability bias, context effects, relational anchoring and acquiescence bias. Each of these is then mapped onto an ``immunity'' of the AI persona: it has no environmental perception, no ongoing stakeholder relationships, and receives no hospitality. Conversely the persona's own liabilities --- inherited training-data and configuration bias, demographic skew, sycophancy, hallucination --- are argued to be \emph{more predictable and adversarially testable} than situationally amplified human bias. The persona is accordingly repositioned as a ``bias-resistant baseline'' against which contaminated human research is triangulated, accompanied by a preliminary decision heuristic (four conditions favouring AI personas, four favouring human participants) and by open questions about what counts as authenticity and what serves as ground truth when validating personas against potentially contaminated human responses.
+
+Relative to the other surrogate-persona papers, Paper 9 is the only one that grounds the persona in the practitioner's own prior interview corpus for \emph{organizational} rather than experimental use, and the only one that frames the persona's value as \emph{de-biasing a compromised research context} rather than as scale, cost or coverage. It also documents a socio-organizational constraint on the concept: adoption of the persona-agents was limited by ``organizational concerns about AI credibility,'' and stakeholder anxiety is why the personas were withheld from the workshop itself.
+
+\begin{table*}[t]
+\centering
+\caption{Running taxonomy of persona conceptualizations across workshop papers (updated through Paper 9).}
+\label{tab:persona-taxonomy}
+\small
+\begin{tabular}{p{0.5cm} p{3.6cm} p{3.4cm} p{3.6cm} p{3.6cm}}
+\toprule
+\textbf{\#} & \textbf{Paper} & \textbf{Main category} & \textbf{Subcategory} & \textbf{Operationalization / unit} \\
+\midrule
+1 & AI Personas for UX Research in Large Scale Retail (Sharma et al., Walmart) &
+Surrogate user persona (LLM-simulated participant) &
+(a) Persona-as-test-participant; (b) Persona-as-latent-trait-vector (activation steering) &
+Demographic/behavioural archetype profiles prompted into a multimodal LLM to produce synthetic usability feedback; validated against 150 human participants. Secondary: persona as steering direction in BLIP-2 activations \\
+\addlinespace
+2 & AI Personas in Highly Regulated Environments: Tools for Calibrating User Reliance? (Vasiliu \& Guarese) &
+System-facing agent persona (deployed AI character) &
+Persona-as-interaction-metaphor for trust/reliance calibration (incl.\ adaptive / metaphor-fluid personas) &
+Two prompt-encoded conversational personas (\textit{Expert Operator} vs.\ \textit{Machine}) defining tone, stance and dialogue structure of a voice CAI; manipulated as an experimental variable and evaluated via trust/workload/usability measures and a behavioural disclosure probe \\
+\addlinespace
+3 & Evaluating Conversational Agent Integration in Peer Support Groups (Uetova et al.) &
+Surrogate user persona (LLM-simulated participant) &
+Persona-as-data-derived individual profile (behavioural clone) for multi-agent social simulation; explicitly contrasted with large ``persona catalogues'' (NLP persona datasets) &
+One persona per real past participant: LLM-generated summary of that person's chat history, demographics and survey answers (tone, emoji use, thematic focus), used to condition synthetic peer replies in a replayed group chat; combined with probabilistic responder selection and ``buddy'' pairing; framed as a pre-deployment testbed for agent prompt/logic refinement, with stated limits on fidelity and inclusivity \\
+\addlinespace
+4 & Grounding Persona-Driven Usability Simulation in Established Standards (Touir, Barika Ktata \& Soui) &
+Surrogate user persona (LLM-simulated participant) &
+Persona-as-autonomous-task-agent (embodied evaluator in a perceive--decide--act loop); Persona-as-edge-case/accessibility probe &
+Supervisor-Agent auto-synthesises personas from UI purpose + source code using a constrained schema (goal, tech-literacy level, accessibility constraint); each persona conditions a VLM/LLM User-Agent that clicks, scrolls and types on a live prototype, emitting action traces, error logs and think-aloud self-reports mapped to ISO 9241-110, Nielsen's heuristics and WCAG. Named exemplars (``Martha R.,'' ``David L.'') act as edge-case probes; governance layer forbids unsupported demographic stereotyping and requires provenance and human escalation \\
+\addlinespace
+5 & Ideal Persona AI in Real-time (Pham Thi Ngoc Anh) &
+Self-expression persona (user's idealized self rendered by GenAI) &
+(a) Persona-as-generated-self-image (real-time text-to-image self-portrait); (b) Persona-as-ethical-behaviour-envelope (transparent ``default ethical persona'' of the system) &
+Persona defined as ``a personality belonging to a participant'' --- an ideal self co-authored with GenAI. Six designers wrote ideal-persona descriptions with ChatGPT, then fed five keywords/questions as prompts to StreamDiffusion in TouchDesigner and watched a live image of that persona; screen capture, field notes, think-aloud and post-study questions analysed thematically. Breakdowns: inconsistent persona prototypes, uncanny valley, disconnection/trust erosion. Proposes moving persona design from ``creative writing'' to ``structural engineering'': prompt training, declared default ethical persona, ethical constraints exposed as UI/UX controls, continuous user control in real time \\
+\addlinespace
+6 & Mapping Personas to Text Transformations: A Taxonomy Outline for Content Adaptation (Sillano, De Russis, Cal\`o, Troncy \& Lisena) &
+Content-adaptation audience persona (NLP prompt-conditioning target reader) &
+(a) Persona-as-decomposable-trait-vector mapped to auditable text-transformation operators; (b) Persona-as-target-reader-profile for content personalization &
+Persona = specification of the intended reader that conditions an LLM rewrite, critiqued as a ``black-box prompt modifier''. Decomposed into four textually-correlated dimensions (demographic, domain knowledge, cognitive, contextual) synthesised from role-playing/personalization surveys; each dimension mapped in a taxonomy table to named operators (lexical, structural, content, style, tone) with worked examples. Two tabular persona profiles (P1 novice student, P2 science journalist) drive a five-step operator chain rewriting a thermodynamics sentence with GPT-5.4, each edit traceable to an operator + persona dimension. Goal: transparency, bias auditability and writer agency; mappings not yet empirically validated \\
+\addlinespace
+7 & \textsc{Synonymix}: Privacy-Preserving Life Story Personas via Graph-Based Abstraction (Chen \& Kumar) &
+Surrogate user persona (LLM-simulated participant) &
+(a) Persona-as-narrative-life-story profile (high-fidelity behavioural proxy for a real individual); (b) Persona-as-privacy-preserving synthetic composite (graph-sampled from many real people); (c) Persona-as-collective artifact (``unigraph'' for meso-level sensemaking) &
+Persona framed as data grounding for a generative agent, on a fidelity continuum from ``flattened'' demographic personas to McAdams-style life story personas. Each persona is converted into a typed knowledge graph (Subject / Factual / Interpretive nodes, with I-nodes produced by LLM ``expert reflection''), genericised and semantically deduplicated into a merged \emph{unigraph}; new personas are sampled by a Thematic Random Walk anchored on an interpretive node. Evaluated as three 30-agent banks (Demographic, Life Story, Synonymix) answering 108 GSS 2022 items, scored by EMD/TVD distributional distance ($p<0.001$, $r=0.59$ on ordinal items) and by Maximum Source Contribution ($\overline{MSC}=0.129$) as a structural privacy metric; DP over node histograms deferred. Persona additionally reframed as a shareable collective representation supporting cross-temporal sensemaking and consensus building rather than prediction \\
+\addlinespace
+8 & Temporal Stability of LLM Personas: A Prerequisite for Social Science Simulation (Gonnermann-Müller) &
+Surrogate user persona (LLM-simulated participant) --- here broadened to \emph{simulated human research subject} &
+(a) Persona-as-simulated-research-subject (social-science simulation agent); (b) Persona-as-psychometrically-measurable trait configuration (stability/drift construct); (c) Implicit split between persona-as-claimed-identity (self-report) and persona-as-enacted-behaviour (observer rating) &
+Persona = prompt-encoded set of characteristics, behavioural tendencies and goals configuring an LLM agent to stand in for a human subject. Operationalized as four graded conditions on a clinical dimension (high / moderate / low ADHD + no-persona default), instantiated via three semantically equivalent prompt variants across seven LLMs. Stability measured with a multi-informant design: first-person self-report on the 12-item Conners' ADHD Index vs.\ blind ratings by three LLM observers scoring behaviour only. Experiment I: 50 independent runs per condition (between-conversation stability, small $SD$s, monotonic scaling with intensity). Experiment II: 18-turn dialogues probed at turns 6/12/18 --- self-reports stable, observer-rated expression declines $\sim$20\% with rising variance, attributed to context dilution and RLHF-driven normativity. Persona treated as a validity risk object: drift toward an ``average persona'' would make multi-agent emergence an artifact; proposes reporting standards (mid-session consistency checks, variability metrics, seed/config replication, full documentation) \\
+\addlinespace
+9 & The Bias Paradox: How AI Personas Can Overcome Human Limitations in UX Research (Celik) &
+Surrogate user persona (LLM-simulated participant) --- framed as \emph{bias-resistant baseline} complementing human research &
+(a) Persona-as-interviewable-research-informant (on-demand stand-in for recruited participants); (b) Persona-as-reactivated-design-artifact (classic static persona document turned conversational agent); (c) Persona-as-comparative-bias-profile (distinct, more predictable bias set than human participants) &
+Six research-based personas distilled from $\sim$70 customer interviews (wealth level, investment style, goals, challenges, behavioural patterns) and instantiated as ChatGPT CustomGPT conversational agents made company-wide available so teams can consult user perspectives without scheduling research; the same personas also function conventionally as artifacts ``presented'' in a design-thinking workshop. Case study contrast: a 40-participant workshop with portfolio managers present in a luxury hotel yielded feedback judged contaminated by social desirability bias, context effects, relational anchoring and acquiescence; each bias is mapped to a corresponding persona ``immunity'' (no environmental perception, no relationships, no hospitality), while persona liabilities (training-data/configuration bias, demographic skew, sycophancy, hallucination) are argued to be consistent and detectable via adversarial prompting. Proposes a preliminary decision heuristic (when personas vs.\ humans are preferable) and raises the validation paradox of using possibly biased human responses as ground truth; notes organizational ``AI credibility'' concerns limiting adoption \\
+\bottomrule
+\end{tabular}
+\end{table*}

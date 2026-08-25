@@ -1,0 +1,96 @@
+% =====================================================================
+% PAPER 1: "AI personas for UX Research in Large Scale Retail"
+% (Sharma, Phatak, Petrosyan, Tripathy -- Walmart Global Tech)
+% =====================================================================
+
+% PERSONA_CATEGORY: Surrogate user persona (LLM-simulated participant)
+% PERSONA_SUBCATEGORY: Persona-as-test-participant (substitute for human respondents in usability studies)
+
+\subsection*{Paper 1 --- \textit{AI Personas for UX Research in Large Scale Retail}}
+
+\paragraph{Conceptual understanding.}
+This paper inherits the classical HCI definition of a persona as a
+\emph{user archetype} representing a segment of a target population, and then
+explicitly re-purposes it: personas are no longer static design artefacts to be
+\emph{read} by designers, but \emph{executable agents} that can be
+\emph{queried}. The authors frame this as a ``natural evolution'': because LLMs
+are trained on broad linguistic and contextual data and personas are
+``traditionally developed as static user archetypes,'' the two are treated as
+sharing a common representational substrate, so the archetype can be animated by
+the model. The decisive conceptual move is that the persona shifts from
+\emph{representation of users} to \emph{surrogate for users}: an ``artificial
+user'' whose verbal reactions stand in for the reactions of a recruited
+participant. Notably, the authors extend the Nielsen--Landauer sample-size model
+to personas, thereby treating a persona as the unit-equivalent of a
+\emph{study participant} ($n$ in $P = 1-(1-L)^n$) rather than as a design
+communication device.
+
+\paragraph{Operationalization.}
+Personas are operationalized at two distinct levels:
+\begin{enumerate}
+  \item \textbf{Prompt-level personas.} A ``lean persona set'' (5 for Canada,
+  11 for Mexico) is authored along dimensions of demographics, digital literacy,
+  financial background, and online-shopping experience (e.g., ``tech-savvy
+  parent in their mid-30s,'' ``budget-conscious college student,''
+  ``retiree encountering online shopping for the first time''). Each persona is
+  instantiated as a profile passed to a multimodal LLM together with a UI
+  screenshot/Figma frame, UX context, and moderator-style probes; the output is
+  synthetic qualitative feedback (user-like quotes, clarity/confusion scores,
+  heatmaps). Validity is established by \emph{alignment} with a 150-participant
+  human moderated study on the ``Quick Add with AI'' feature (trust, control,
+  clarity, relevance).
+  \item \textbf{Activation-level personas.} In an extension, a persona is
+  redefined mechanistically as a \emph{direction in the model's latent space}
+  (e.g., ``Budget Consciousness,'' ``Tech Illiteracy''), isolated as a contrast
+  vector $\mathbf{V} = \mathrm{Act}(P_{pos}) - \mathrm{Act}(P_{neg})$ and
+  injected into layer 15 of BLIP-2's language model with a steering coefficient
+  $\alpha$. Here the persona is not a described character but a
+  \emph{steerable trait vector} --- a notably non-classical, sub-symbolic
+  operationalization of the term.
+\end{enumerate}
+
+\paragraph{Notes for the workshop analysis.}
+The paper is a clear instance of the ``synthetic/AI persona'' turn, but it is
+useful for our argument in two ways. First, the persona is measured against
+\emph{human participants} rather than against design usefulness --- the quality
+criterion is fidelity/alignment, not communicative value for a design team.
+Second, the activation-steering section stretches the term furthest from its HCI
+origin: ``persona'' comes to denote a latent-space trait direction inside a
+model, i.e., a property of the \emph{system} rather than a representation of a
+\emph{user group}. The paper therefore contains two different senses of persona
+under one label (archetype-as-respondent and trait-vector-as-model-control),
+which supports the case for disambiguating prefixes.
+
+% =====================================================================
+% RUNNING TAXONOMY TABLE
+% =====================================================================
+
+\begin{table*}[t]
+\centering
+\caption{Running taxonomy of persona conceptualizations across workshop papers (updated through Paper 1).}
+\label{tab:persona-taxonomy}
+\small
+\begin{tabular}{p{0.5cm} p{3.6cm} p{3.4cm} p{3.6cm} p{3.6cm}}
+\toprule
+\textbf{\#} & \textbf{Paper} & \textbf{Main category} & \textbf{Subcategory} & \textbf{Operationalization / unit} \\
+\midrule
+1 & AI Personas for UX Research in Large Scale Retail (Sharma et al., Walmart) &
+Surrogate user persona (LLM-simulated participant) &
+(a) Persona-as-test-participant; (b) Persona-as-latent-trait-vector (activation steering) &
+Demographic/behavioural archetype profiles prompted into a multimodal LLM to produce synthetic usability feedback; validated against 150 human participants. Secondary: persona as steering direction in BLIP-2 activations \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+% ---------------------------------------------------------------------
+% CATEGORY DEFINITIONS (to be extended as further papers are coded)
+% ---------------------------------------------------------------------
+\paragraph{Category definitions so far.}
+\begin{description}
+  \item[Surrogate user persona (LLM-simulated participant)] The persona is an
+  archetype of a user group that is \emph{enacted} by a generative model so that
+  it can answer research questions in place of a human participant. Success is
+  judged by correspondence with real user data. Sub-variants distinguish
+  (a) personas realised through natural-language profiles/prompts and
+  (b) personas realised as internal model parameters or activation directions.
+\end{description}

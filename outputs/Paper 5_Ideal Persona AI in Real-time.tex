@@ -1,0 +1,45 @@
+\subsection*{Paper 5: \textit{Ideal Persona AI in Real-time} (Pham Thi Ngoc Anh)}
+
+% PERSONA_CATEGORY: Self-expression persona (user's idealized self rendered by GenAI)
+% PERSONA_SUBCATEGORY: Persona-as-generated-self-image (real-time text-to-image self-portrait); Persona-as-ethical-behaviour-envelope of the AI ("default ethical persona")
+
+This position paper uses ``persona'' in a sense that is largely orthogonal to the classical HCI design persona: it is neither a representation of a user segment for designers nor a synthetic stand-in for study participants. Instead, the author explicitly defines an ``AI persona'' as ``a personality belonging to a participant'' --- specifically an \emph{ideal version of the self} that the participant asks GenAI to articulate and depict. Persona here is thus a first-person, self-expressive artefact: an aspirational self-image co-authored by user and model, rather than an abstraction over other people. The paper simultaneously slides between two further senses of the word: (i) persona as the \emph{personality of the AI system itself} (``\textit{personality} is no longer simply a value that humans assign to their individual AI agents but a central function in the collaborative relationship between users and AI''), and (ii) persona as a \emph{governance object} --- the proposed transparent ``default ethical persona,'' i.e.\ a declared, fallback set of safe and predictable communication behaviours that the system reverts to. Persona is therefore treated as both an identity representation and a behavioural envelope for AI conduct.
+
+Operationally, persona is instantiated as prompt material in a real-time generative pipeline. Six experienced designers/artists (25--30 min sessions) first conversed with ChatGPT to write a paragraph describing their ideal persona, then supplied keyword prompts (a five-keyword, five-question format) to StreamDiffusion running in TouchDesigner, watching their persona be rendered as a continuously updating image (e.g.\ ``Modern elegant woman in minimalist living room''). The unit of analysis is thus the \emph{live audiovisual persona prototype} and the participant's affective relation to it, captured through screen-capture video, field notes, think-aloud comments and post-study interviews, analysed via rapid thematic analysis of breakdowns. Three failure modes are reported: \emph{inconsistent persona prototypes} (under-specified prompts yield personas disconnected from self-expectations), \emph{uncanny valley} effects (distorted quasi-human figures that participants reject: ``It wasn't me, nor did it look like a normal person''), and \emph{disconnection} (unstable outputs eroding trust). The paper's normative claim is that persona creation should shift from ``creative writing'' to ``structural engineering,'' with four design proposals: train users in standardised prompting; maintain a transparent default ethical persona; surface hidden ethical constraints as adjustable UI/UX controls; and keep users continuously in the loop through real-time prompt refinement. Ethics is thereby relocated from the model level to the interaction level, and persona becomes the site where user control, self-representation and AI conduct are negotiated --- an understanding closer to identity/self-presentation research than to persona-as-design-tool.
+
+\begin{table*}[t]
+\centering
+\caption{Running taxonomy of persona conceptualizations across workshop papers (updated through Paper 5).}
+\label{tab:persona-taxonomy}
+\small
+\begin{tabular}{p{0.5cm} p{3.6cm} p{3.4cm} p{3.6cm} p{3.6cm}}
+\toprule
+\textbf{\#} & \textbf{Paper} & \textbf{Main category} & \textbf{Subcategory} & \textbf{Operationalization / unit} \\
+\midrule
+1 & AI Personas for UX Research in Large Scale Retail (Sharma et al., Walmart) &
+Surrogate user persona (LLM-simulated participant) &
+(a) Persona-as-test-participant; (b) Persona-as-latent-trait-vector (activation steering) &
+Demographic/behavioural archetype profiles prompted into a multimodal LLM to produce synthetic usability feedback; validated against 150 human participants. Secondary: persona as steering direction in BLIP-2 activations \\
+\addlinespace
+2 & AI Personas in Highly Regulated Environments: Tools for Calibrating User Reliance? (Vasiliu \& Guarese) &
+System-facing agent persona (deployed AI character) &
+Persona-as-interaction-metaphor for trust/reliance calibration (incl.\ adaptive / metaphor-fluid personas) &
+Two prompt-encoded conversational personas (\textit{Expert Operator} vs.\ \textit{Machine}) defining tone, stance and dialogue structure of a voice CAI; manipulated as an experimental variable and evaluated via trust/workload/usability measures and a behavioural disclosure probe \\
+\addlinespace
+3 & Evaluating Conversational Agent Integration in Peer Support Groups (Uetova et al.) &
+Surrogate user persona (LLM-simulated participant) &
+Persona-as-data-derived individual profile (behavioural clone) for multi-agent social simulation; explicitly contrasted with large ``persona catalogues'' (NLP persona datasets) &
+One persona per real past participant: LLM-generated summary of that person's chat history, demographics and survey answers (tone, emoji use, thematic focus), used to condition synthetic peer replies in a replayed group chat; combined with probabilistic responder selection and ``buddy'' pairing; framed as a pre-deployment testbed for agent prompt/logic refinement, with stated limits on fidelity and inclusivity \\
+\addlinespace
+4 & Grounding Persona-Driven Usability Simulation in Established Standards (Touir, Barika Ktata \& Soui) &
+Surrogate user persona (LLM-simulated participant) &
+Persona-as-autonomous-task-agent (embodied evaluator in a perceive--decide--act loop); Persona-as-edge-case/accessibility probe &
+Supervisor-Agent auto-synthesises personas from UI purpose + source code using a constrained schema (goal, tech-literacy level, accessibility constraint); each persona conditions a VLM/LLM User-Agent that clicks, scrolls and types on a live prototype, emitting action traces, error logs and think-aloud self-reports mapped to ISO 9241-110, Nielsen's heuristics and WCAG. Named exemplars (``Martha R.,'' ``David L.'') act as edge-case probes; governance layer forbids unsupported demographic stereotyping and requires provenance and human escalation \\
+\addlinespace
+5 & Ideal Persona AI in Real-time (Pham Thi Ngoc Anh) &
+Self-expression persona (user's idealized self rendered by GenAI) &
+(a) Persona-as-generated-self-image (real-time text-to-image self-portrait); (b) Persona-as-ethical-behaviour-envelope (transparent ``default ethical persona'' of the system) &
+Persona defined as ``a personality belonging to a participant'' --- an ideal self co-authored with GenAI. Six designers wrote ideal-persona descriptions with ChatGPT, then fed five keywords/questions as prompts to StreamDiffusion in TouchDesigner and watched a live image of that persona; screen capture, field notes, think-aloud and post-study questions analysed thematically. Breakdowns: inconsistent persona prototypes, uncanny valley, disconnection/trust erosion. Proposes moving persona design from ``creative writing'' to ``structural engineering'': prompt training, declared default ethical persona, ethical constraints exposed as UI/UX controls, continuous user control in real time \\
+\bottomrule
+\end{tabular}
+\end{table*}

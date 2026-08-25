@@ -1,0 +1,32 @@
+% PERSONA\_CATEGORY: System-facing agent persona (deployed AI character)
+% PERSONA\_SUBCATEGORY: Persona-as-interaction-metaphor for trust/reliance calibration
+
+\subsection*{Paper 2: \textit{AI Personas in Highly Regulated Environments: Tools for Calibrating User Reliance?} (Vasiliu \& Guarese)}
+
+This position paper explicitly breaks with the classical HCI understanding of a persona as a designer-facing representation of a user group. The authors acknowledge that lineage --- ``in design practice, personas are used to help designers anticipate user goals, motivations, and challenges'' --- but immediately redirect the term toward what they call \emph{system personas}: ``constructed characters embedded in deployed systems to guide user interaction.'' The persona is thus not a research artefact about users, but a designed property \emph{of the artefact itself}, encountered by users at runtime. Personas are described as either \emph{explicit} (identity declared) or \emph{implicit} (conveyed through speech patterns, dialogue structure, voice characteristics), which situates the concept close to voice-interface metaphor theory (Desai \& Twidale) rather than to Cooper/Pruitt-style design personas.
+
+Operationally, persona is a manipulated independent variable in a within-subjects user experiment with expert operators in pharmaceutical manufacturing. Two personas were implemented purely through \emph{system-level prompts} specifying linguistic style, tone, social stance, and instructional structure: the \textit{Expert Operator} (a human colleague metaphor, supportive and conversational) and the \textit{Machine} (the maintained machine speaking in the first person, concise and directive). The unit of the persona is therefore a prompt-encoded conversational style/metaphor attached to a voice assistant, crossed with a second variable (spatial voice embodiment).
+
+Conceptually distinctive is the paper's normative framing: persona is treated as a \emph{lightweight behavioural lever for calibrating trust, reliance, and user autonomy} in a safety-critical, high-authority institutional setting. Anthropomorphic persona cues are theorised as risking overtrust and reduced critical engagement, while reduced social signalling is theorised as producing productive friction (hesitation, second-guessing, ``defiance''), i.e., recalibrated reliance. Evaluation correspondingly targets user behaviour rather than persona fidelity: ad-hoc Likert trust items plus a behavioural ``trust probe'' (unsolicited password disclosure to the assistant). The authors further propose \emph{adaptive} or \emph{metaphor-fluid} personas that shift with operator expertise (more human-like for novices, progressively de-anthropomorphised for experts), treating persona as a tunable design parameter rather than a fixed user archetype. Ethical concerns are framed around personas creating ``false impressions of empathy or authority'' and reinforcing institutional compliance --- again a concern about the AI's projected character, not about representing users.
+
+\begin{table*}[t]
+\centering
+\caption{Running taxonomy of persona conceptualizations across workshop papers (updated through Paper 2).}
+\label{tab:persona-taxonomy}
+\small
+\begin{tabular}{p{0.5cm} p{3.6cm} p{3.4cm} p{3.6cm} p{3.6cm}}
+\toprule
+\textbf{\#} & \textbf{Paper} & \textbf{Main category} & \textbf{Subcategory} & \textbf{Operationalization / unit} \\
+\midrule
+1 & AI Personas for UX Research in Large Scale Retail (Sharma et al., Walmart) &
+Surrogate user persona (LLM-simulated participant) &
+(a) Persona-as-test-participant; (b) Persona-as-latent-trait-vector (activation steering) &
+Demographic/behavioural archetype profiles prompted into a multimodal LLM to produce synthetic usability feedback; validated against 150 human participants. Secondary: persona as steering direction in BLIP-2 activations \\
+\addlinespace
+2 & AI Personas in Highly Regulated Environments: Tools for Calibrating User Reliance? (Vasiliu \& Guarese) &
+System-facing agent persona (deployed AI character) &
+Persona-as-interaction-metaphor for trust/reliance calibration (incl.\ adaptive / metaphor-fluid personas) &
+Two prompt-encoded conversational personas (\textit{Expert Operator} vs.\ \textit{Machine}) defining tone, stance and dialogue structure of a voice CAI; manipulated as an experimental variable and evaluated via trust/workload/usability measures and a behavioural disclosure probe \\
+\bottomrule
+\end{tabular}
+\end{table*}

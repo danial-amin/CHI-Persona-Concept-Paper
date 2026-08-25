@@ -1,0 +1,35 @@
+% PERSONA\_CATEGORY: Surrogate user persona (LLM-simulated participant)
+% PERSONA\_SUBCATEGORY: Persona-as-data-derived individual profile (behavioural clone) for multi-agent social simulation
+
+\subsection*{Paper 3 --- Evaluating Conversational Agent Integration in Peer Support Groups (Uetova et al.)}
+
+This paper uses \emph{persona} as an \textbf{individual-level, data-derived conditioning profile} that allows an LLM to stand in for a specific, previously observed human participant. Personas are not design abstractions representing user segments, nor archetypes intended to cover a user population; each persona corresponds to \emph{one} real member of a past behaviour-change intervention's group chat. Operationally, an LLM summarises each participant's historical messages, limited demographic data and selected survey responses into a ``persona summary'' capturing writing tone, stylistic markers (e.g., emoji use) and conversational focus (goal tracking, encouragement, expressions of struggle). These summaries then drive \emph{persona-conditioned generation} of synthetic peer replies inside a turn-by-turn replay of the original chat, combined with rule-based intervention triggers, LLM classifiers for the conversational agent's response strategy, and a probabilistic model of who responds (including a hard-coded ``buddy'' pairing that biases interaction likelihood). The persona is thus a stylistic and dispositional constraint on generated dialogue rather than a communicative device for design deliberation.
+
+Notably, the authors are explicitly reflexive about which persona tradition they inhabit: they position their work as ``one particular variant of persona use'' in which personas are tightly bound to a specific context and dataset (citing data-driven persona work on clickstreams and player logs), contrasting this with large \emph{persona catalogues} from the NLP/personalised-dialogue literature (e.g., persona-based conversational datasets), and raising ethical, inclusivity and data-quality concerns about such catalogues (representational gaps, persona bias in dialogue systems, transparency of synthetic personas). They also state clear epistemic limits: the personas approximate style and engagement tendencies but cannot capture personality, evolving motivation or emotional state, so the simulation yields ``plausible continuations,'' not behavioural prediction. The purpose is pre-deployment engineering: a risk-free testbed for iterating the agent's conversational logic and prompts before exposing real participants in a sensitive health context. A proposed hybrid future --- diverse persona catalogues as backbone, augmented with study-specific data --- makes the paper an interesting bridge between the design-persona, data-driven-persona and NLP-persona vocabularies.
+
+\begin{table*}[t]
+\centering
+\caption{Running taxonomy of persona conceptualizations across workshop papers (updated through Paper 3).}
+\label{tab:persona-taxonomy}
+\small
+\begin{tabular}{p{0.5cm} p{3.6cm} p{3.4cm} p{3.6cm} p{3.6cm}}
+\toprule
+\textbf{\#} & \textbf{Paper} & \textbf{Main category} & \textbf{Subcategory} & \textbf{Operationalization / unit} \\
+\midrule
+1 & AI Personas for UX Research in Large Scale Retail (Sharma et al., Walmart) &
+Surrogate user persona (LLM-simulated participant) &
+(a) Persona-as-test-participant; (b) Persona-as-latent-trait-vector (activation steering) &
+Demographic/behavioural archetype profiles prompted into a multimodal LLM to produce synthetic usability feedback; validated against 150 human participants. Secondary: persona as steering direction in BLIP-2 activations \\
+\addlinespace
+2 & AI Personas in Highly Regulated Environments: Tools for Calibrating User Reliance? (Vasiliu \& Guarese) &
+System-facing agent persona (deployed AI character) &
+Persona-as-interaction-metaphor for trust/reliance calibration (incl.\ adaptive / metaphor-fluid personas) &
+Two prompt-encoded conversational personas (\textit{Expert Operator} vs.\ \textit{Machine}) defining tone, stance and dialogue structure of a voice CAI; manipulated as an experimental variable and evaluated via trust/workload/usability measures and a behavioural disclosure probe \\
+\addlinespace
+3 & Evaluating Conversational Agent Integration in Peer Support Groups (Uetova et al.) &
+Surrogate user persona (LLM-simulated participant) &
+Persona-as-data-derived individual profile (behavioural clone) for multi-agent social simulation; explicitly contrasted with large ``persona catalogues'' (NLP persona datasets) &
+One persona per real past participant: LLM-generated summary of that person's chat history, demographics and survey answers (tone, emoji use, thematic focus), used to condition synthetic peer replies in a replayed group chat; combined with probabilistic responder selection and ``buddy'' pairing; framed as a pre-deployment testbed for agent prompt/logic refinement, with stated limits on fidelity and inclusivity \\
+\bottomrule
+\end{tabular}
+\end{table*}

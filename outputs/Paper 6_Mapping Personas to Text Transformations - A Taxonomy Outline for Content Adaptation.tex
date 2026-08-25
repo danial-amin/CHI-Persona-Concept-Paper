@@ -1,0 +1,56 @@
+% PERSONA\_CATEGORY: Content-adaptation audience persona (NLP prompt-conditioning target reader)
+% PERSONA\_SUBCATEGORY: Persona-as-decomposable-trait-vector mapped to auditable text-transformation operators; Persona-as-target-reader-profile for content personalization
+
+\subsection*{Paper 6 --- \textit{Mapping Personas to Text Transformations: A Taxonomy Outline for Content Adaptation} (Sillano, De Russis, Cal\`o, Troncy \& Lisena)}
+
+This paper treats \emph{persona} in an explicitly NLP/LLM sense: a persona is neither a design artefact representing a user segment nor a simulated participant, but a \textbf{specification of the target reader that conditions a rewriting model}. Personas here are the ``audience profile'' invoked when a user writes \textit{``simplify for a beginner''} or \textit{``Act as a $\langle$persona description$\rangle$, rewrite this for $\langle$settings$\rangle$''}; the authors' concern is that in such workflows the persona operates as a \emph{black-box prompt modifier} whose mapping to concrete textual edits is opaque, unauditable and potentially bias-inducing. The paper's contribution is to \emph{decompose} the persona so that it becomes controllable.
+
+Conceptually, persona is grounded in the role-playing/personalization literature on LLMs (Chen et al.; Tseng et al.; Persona-DB) and modelled as a \textbf{layered, multi-dimensional trait structure} with four axes chosen because each has a demonstrable ``textual correlate'': (1) demographic attributes, (2) domain knowledge, (3) cognitive attributes, (4) contextual attributes. Dimensions without a well-defined mapping to discrete text operations (e.g.\ background, beliefs) are deliberately excluded --- an explicitly \emph{instrumental} scoping criterion: a persona trait counts only if it can be cashed out as an edit operation. Persona is thus operationalized as a \emph{controllable knob set} rather than as a narrative character; the authors argue that separable dimensions improve controllability and attribution relative to ``monolithic persona descriptions.''
+
+Operationally, the paper proposes a literature-informed taxonomy (Table~1 of the paper) mapping each persona dimension to named transformation operators drawn from controllable text simplification and style-transfer research --- lexical, structural, content, style, tone --- each with a result and worked example (e.g.\ domain knowledge $\rightarrow$ lexical: ``myocardial infarction'' $\leftrightarrow$ ``heart attack''; contextual attributes $\rightarrow$ content: cultural reference substitution). Two concrete persona profiles are then instantiated in the classic tabular persona format (P1: 16-year-old high-school student, no physics background, novice reader, practical reading goal; P2: early-career science journalist, general scientific literacy, comfortable with complex syntax, instrumental reading goal), each annotated with its ``operator contribution''. A thermodynamics sentence is rewritten in a five-step operator chain in which every edit is attributed to a named operator \emph{and} a source persona dimension (Step~1 Lexical $\leftarrow$ P1 domain knowledge; Step~4 Style $\leftarrow$ P2 demographic, etc.), producing a traceable audit trail.
+
+Notably, the persona profiles superficially resemble classic HCI design personas (a table of demographic and goal attributes, a plausible individual) but are used in a fundamentally different way: they are not empathy devices or representations of a user segment for design deliberation, but \emph{input parameters to a text generator}, valued for the systematic variance they induce in model output. The normative framing is accountability-oriented: making persona-to-edit mappings visible is argued to counter stereotype amplification, prompt-formulation sensitivity, and loss of writer agency, shifting persona use ``from an opaque prompt trick into a controllable and evaluable design space.'' The paper is a position/taxonomy outline; the mappings are not yet empirically validated, and the authors invite the community to test them.
+
+\bigskip
+
+\begin{table*}[t]
+\centering
+\caption{Running taxonomy of persona conceptualizations across workshop papers (updated through Paper 6).}
+\label{tab:persona-taxonomy}
+\small
+\begin{tabular}{p{0.5cm} p{3.6cm} p{3.4cm} p{3.6cm} p{3.6cm}}
+\toprule
+\textbf{\#} & \textbf{Paper} & \textbf{Main category} & \textbf{Subcategory} & \textbf{Operationalization / unit} \\
+\midrule
+1 & AI Personas for UX Research in Large Scale Retail (Sharma et al., Walmart) &
+Surrogate user persona (LLM-simulated participant) &
+(a) Persona-as-test-participant; (b) Persona-as-latent-trait-vector (activation steering) &
+Demographic/behavioural archetype profiles prompted into a multimodal LLM to produce synthetic usability feedback; validated against 150 human participants. Secondary: persona as steering direction in BLIP-2 activations \\
+\addlinespace
+2 & AI Personas in Highly Regulated Environments: Tools for Calibrating User Reliance? (Vasiliu \& Guarese) &
+System-facing agent persona (deployed AI character) &
+Persona-as-interaction-metaphor for trust/reliance calibration (incl.\ adaptive / metaphor-fluid personas) &
+Two prompt-encoded conversational personas (\textit{Expert Operator} vs.\ \textit{Machine}) defining tone, stance and dialogue structure of a voice CAI; manipulated as an experimental variable and evaluated via trust/workload/usability measures and a behavioural disclosure probe \\
+\addlinespace
+3 & Evaluating Conversational Agent Integration in Peer Support Groups (Uetova et al.) &
+Surrogate user persona (LLM-simulated participant) &
+Persona-as-data-derived individual profile (behavioural clone) for multi-agent social simulation; explicitly contrasted with large ``persona catalogues'' (NLP persona datasets) &
+One persona per real past participant: LLM-generated summary of that person's chat history, demographics and survey answers (tone, emoji use, thematic focus), used to condition synthetic peer replies in a replayed group chat; combined with probabilistic responder selection and ``buddy'' pairing; framed as a pre-deployment testbed for agent prompt/logic refinement, with stated limits on fidelity and inclusivity \\
+\addlinespace
+4 & Grounding Persona-Driven Usability Simulation in Established Standards (Touir, Barika Ktata \& Soui) &
+Surrogate user persona (LLM-simulated participant) &
+Persona-as-autonomous-task-agent (embodied evaluator in a perceive--decide--act loop); Persona-as-edge-case/accessibility probe &
+Supervisor-Agent auto-synthesises personas from UI purpose + source code using a constrained schema (goal, tech-literacy level, accessibility constraint); each persona conditions a VLM/LLM User-Agent that clicks, scrolls and types on a live prototype, emitting action traces, error logs and think-aloud self-reports mapped to ISO 9241-110, Nielsen's heuristics and WCAG. Named exemplars (``Martha R.,'' ``David L.'') act as edge-case probes; governance layer forbids unsupported demographic stereotyping and requires provenance and human escalation \\
+\addlinespace
+5 & Ideal Persona AI in Real-time (Pham Thi Ngoc Anh) &
+Self-expression persona (user's idealized self rendered by GenAI) &
+(a) Persona-as-generated-self-image (real-time text-to-image self-portrait); (b) Persona-as-ethical-behaviour-envelope (transparent ``default ethical persona'' of the system) &
+Persona defined as ``a personality belonging to a participant'' --- an ideal self co-authored with GenAI. Six designers wrote ideal-persona descriptions with ChatGPT, then fed five keywords/questions as prompts to StreamDiffusion in TouchDesigner and watched a live image of that persona; screen capture, field notes, think-aloud and post-study questions analysed thematically. Breakdowns: inconsistent persona prototypes, uncanny valley, disconnection/trust erosion. Proposes moving persona design from ``creative writing'' to ``structural engineering'': prompt training, declared default ethical persona, ethical constraints exposed as UI/UX controls, continuous user control in real time \\
+\addlinespace
+6 & Mapping Personas to Text Transformations: A Taxonomy Outline for Content Adaptation (Sillano, De Russis, Cal\`o, Troncy \& Lisena) &
+Content-adaptation audience persona (NLP prompt-conditioning target reader) &
+(a) Persona-as-decomposable-trait-vector mapped to auditable text-transformation operators; (b) Persona-as-target-reader-profile for content personalization &
+Persona = specification of the intended reader that conditions an LLM rewrite, critiqued as a ``black-box prompt modifier''. Decomposed into four textually-correlated dimensions (demographic, domain knowledge, cognitive, contextual) synthesised from role-playing/personalization surveys; each dimension mapped in a taxonomy table to named operators (lexical, structural, content, style, tone) with worked examples. Two tabular persona profiles (P1 novice student, P2 science journalist) drive a five-step operator chain rewriting a thermodynamics sentence with GPT-5.4, each edit traceable to an operator + persona dimension. Goal: transparency, bias auditability and writer agency; mappings not yet empirically validated \\
+\bottomrule
+\end{tabular}
+\end{table*}

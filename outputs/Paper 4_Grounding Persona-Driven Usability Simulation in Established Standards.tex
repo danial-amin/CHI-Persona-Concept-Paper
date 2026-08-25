@@ -1,0 +1,83 @@
+% =====================================================================
+% Paper 4: Grounding Persona-Driven Usability Simulation in Established
+% Standards (Touir, Barika Ktata \& Soui)
+% =====================================================================
+
+% PERSONA_CATEGORY: Surrogate user persona (LLM-simulated participant)
+% PERSONA_SUBCATEGORY: Persona-as-autonomous-task-agent (embodied evaluator in a perceive--decide--act loop); Persona-as-edge-case/accessibility probe
+
+\subsection*{Paper 4 --- \textit{Grounding Persona-Driven Usability Simulation in Established Standards} (Touir, Barika Ktata \& Soui)}
+
+This paper treats the persona as an \emph{executable stand-in for a user in a usability
+test}: not a static description that a designer reads, but a parameterisation that makes an
+LLM/VLM agent behave like a particular kind of user while interacting with a live prototype.
+Personas are not authored by researchers from field data; they are \emph{synthesised on demand}
+by a Supervisor-Agent that inspects the UI purpose, context and source code and then
+``spawns'' plausible User-Agents. Each persona is operationalised as a constrained attribute
+schema --- task goal, technical literacy level, and accessibility constraint --- which
+conditions the agent's reasoning policy inside a perceive--decide--act loop (e.g., a
+\textit{Power User} searches for keyboard shortcuts, a \textit{Novice} scans for large
+call-to-action buttons). The persona thus functions as a behavioural controller rather than a
+communication artefact.
+
+Two further features distinguish this use of the term. First, the persona is a
+\emph{measurement instrument}: its outputs are three evidence streams --- action traces, error
+logs, and think-aloud ``subjective self-reports'' --- that are subsequently mapped by the
+Supervisor to normative standards (ISO 9241-110, Nielsen's heuristics, WCAG), so persona-level
+frustration is converted into diagnosable, standards-grounded defect claims. Second, the
+persona is explicitly an \emph{edge-case probe}: named exemplars such as ``Martha R.,'' a
+68-year-old low-tech-literacy user, and ``David L.,'' a 29-year-old deuteranope, exist to
+stress-test accessibility conditions that generic agents would miss. Personas here retain the
+classic surface markers of design personas (a first name, an age, a goal, a narrative
+vignette), but their epistemic role is inverted: they are not a shared design fiction for
+empathy-building but disposable, machine-generated test fixtures whose validity is judged by
+detection precision/recall against expert annotations.
+
+Notably, the paper is reflexive about persona epistemology. It introduces ``persona
+governance'': a constrained generation schema that deliberately excludes unsupported
+demographic stereotyping, provenance bundles (persona prompt + trace + failed step + mapped
+guideline + verification outcome) for auditability, cross-persona agreement checks, and
+escalation of single-persona or conflicting findings to human reviewers. Persona bias --- the
+risk that a persona ``over-generalizes user behavior from stereotypes'' --- is named as a
+first-class deployment risk with an acknowledged residual. The authors are also explicit about
+scope conditions: persona simulation works for localizable, interaction-level breakdowns but
+degrades on global, longitudinal constructs such as suitability for learning, and is therefore
+positioned as an auditable first-pass triage filter rather than a replacement for human
+evaluation. In taxonomy terms, this is a surrogate user persona, but of a \emph{behaviour-executing}
+rather than \emph{opinion-reporting} kind, which is what separates it from Paper~1.
+
+% =====================================================================
+% Updated running taxonomy
+% =====================================================================
+
+\begin{table*}[t]
+\centering
+\caption{Running taxonomy of persona conceptualizations across workshop papers (updated through Paper 4).}
+\label{tab:persona-taxonomy}
+\small
+\begin{tabular}{p{0.5cm} p{3.6cm} p{3.4cm} p{3.6cm} p{3.6cm}}
+\toprule
+\textbf{\#} & \textbf{Paper} & \textbf{Main category} & \textbf{Subcategory} & \textbf{Operationalization / unit} \\
+\midrule
+1 & AI Personas for UX Research in Large Scale Retail (Sharma et al., Walmart) &
+Surrogate user persona (LLM-simulated participant) &
+(a) Persona-as-test-participant; (b) Persona-as-latent-trait-vector (activation steering) &
+Demographic/behavioural archetype profiles prompted into a multimodal LLM to produce synthetic usability feedback; validated against 150 human participants. Secondary: persona as steering direction in BLIP-2 activations \\
+\addlinespace
+2 & AI Personas in Highly Regulated Environments: Tools for Calibrating User Reliance? (Vasiliu \& Guarese) &
+System-facing agent persona (deployed AI character) &
+Persona-as-interaction-metaphor for trust/reliance calibration (incl.\ adaptive / metaphor-fluid personas) &
+Two prompt-encoded conversational personas (\textit{Expert Operator} vs.\ \textit{Machine}) defining tone, stance and dialogue structure of a voice CAI; manipulated as an experimental variable and evaluated via trust/workload/usability measures and a behavioural disclosure probe \\
+\addlinespace
+3 & Evaluating Conversational Agent Integration in Peer Support Groups (Uetova et al.) &
+Surrogate user persona (LLM-simulated participant) &
+Persona-as-data-derived individual profile (behavioural clone) for multi-agent social simulation; explicitly contrasted with large ``persona catalogues'' (NLP persona datasets) &
+One persona per real past participant: LLM-generated summary of that person's chat history, demographics and survey answers (tone, emoji use, thematic focus), used to condition synthetic peer replies in a replayed group chat; combined with probabilistic responder selection and ``buddy'' pairing; framed as a pre-deployment testbed for agent prompt/logic refinement, with stated limits on fidelity and inclusivity \\
+\addlinespace
+4 & Grounding Persona-Driven Usability Simulation in Established Standards (Touir, Barika Ktata \& Soui) &
+Surrogate user persona (LLM-simulated participant) &
+Persona-as-autonomous-task-agent (embodied evaluator in a perceive--decide--act loop); Persona-as-edge-case/accessibility probe &
+Supervisor-Agent auto-synthesises personas from UI purpose + source code using a constrained schema (goal, tech-literacy level, accessibility constraint); each persona conditions a VLM/LLM User-Agent that clicks, scrolls and types on a live prototype, emitting action traces, error logs and think-aloud self-reports that are mapped to ISO 9241-110, Nielsen's heuristics and WCAG. Named exemplars (``Martha R.,'' 68, low literacy; ``David L.,'' deuteranope) serve as edge-case probes. Governance layer: no unsupported demographic stereotyping, provenance bundles, cross-persona agreement checks, verification-before-reporting, human escalation; persona simulation framed as first-pass triage, weak on longitudinal constructs \\
+\bottomrule
+\end{tabular}
+\end{table*}
